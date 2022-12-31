@@ -1,0 +1,42 @@
+#include<iostream>
+#include<map>
+#include<string>
+using namespace std;
+int main()
+{
+map<string,int >first;
+first["MAHARASHTRA"]= 123144223;
+first["GUJARAT"]=6387299;
+first["RAJASHTAN"]=81032689;
+first["BIHAR"]=12479926;
+first["KASHMIR"]=13606320;
+first["PUNJAB"]=30141373;
+map<string, int>::iterator it;
+cout<<"==========POPULATION OF STATES IN 
+INDIA==========\n\n";
+cout<<"\n SIZE ODF POPULATION 
+MAP=\t"<<first.size()<<"\n"<<"\n";
+for(it=first.begin(); it!=first.end();it++)
+{
+cout<<"NAME OF THE STATE \t"<< it-
+>first<<"=>"<<"POPULATION \t"<<it->second<<'\n';
+}
+string c;
+cout<<"\n WRITE STATE NAME \t";
+cin>>c;
+cout<<"population of \t"<<c<<"IS \t"<<first[c];
+return 0;
+}
+
+
+Output
+==========POPULATION OF STATES IN INDIA==========
+SIZE ODF POPULATION MAP= 6
+NAME OF THE STATE BIHAR=>POPULATION 12479926
+NAME OF THE STATE GUJARAT=>POPULATION 6387299
+NAME OF THE STATE KASHMIR=>POPULATION 13606320
+NAME OF THE STATE MAHARASHTRA=>POPULATION 123144223
+NAME OF THE STATE PUNJAB=>POPULATION 30141373
+NAME OF THE STATE RAJASHTAN=>POPULATION 81032689
+WRITE STATE NAME BIHAR
+population of BIHARIS 12479926

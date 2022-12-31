@@ -1,0 +1,126 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+class student
+{
+public:
+int roll_no;
+char clas[10];
+int sr_no;
+long int tele_no;
+char name[20];
+char div;
+char blood_grp;
+char DOB[10];
+static int count;
+void getdata();
+friend void display(student&obj);
+student()
+roll_no=0;
+cout<<"\tConstructor";
+roll_no=count;
+count++;
+}
+~student()
+{
+cout<<"\nDestructor";
+cout<<"\nDestroying the object";
+count--;
+}
+student(int roll_no)
+{
+this->roll_no=roll_no;
+}
+student(student&obj)
+{
+roll_no=obj.roll_no;
+strcpy(name,obj.name);
+strcpy(DOB,obj.DOB);
+strcpy(clas,obj.clas);
+blood_grp=obj.blood_grp;
+div=obj.div;
+tele_no=obj.tele_no;
+sr_no=count;
+count++;
+}
+};
+int student:: count=0;
+void student::getdata()
+{
+cout<<"\n"<<"Enter the roll number of students: ";
+cin>>roll_no;
+cout<<"\n"<<"Enter name of student: ";
+cin>>name;
+cout<<"\n"<<"Enter the date of birth of student: ";
+cin>>DOB;
+cout<<"\n"<<"Enter the blood group of student: ";
+cin>>blood_grp;
+cout<<"\n"<<"Enter the class of student: ";
+cin>>clas;
+cout<<"\n"<<"Enter the divisin of student: ";
+cin>>div;
+cout<<"\n"<<"Enter the contact of student: ";
+cin>>tele_no;
+}
+void display(student&obj)
+{
+cout<<"\n"<<obj.roll_no;
+cout<<"\t"<<obj.name;
+cout<<"\t"<<obj.DOB;
+cout<<"\t"<<obj.blood_grp;
+cout<<"\t"<<obj.clas;
+cout<<"\t"<<obj.div;
+cout<<"\t"<<obj.tele_no;
+}
+int main()
+{
+student s1;
+student s2(s1);
+cout<<"\n Enter details of student: "<<"\n";
+s1.getdata();
+cout<<"All data is displayed below:"<<"\n";
+cout<<"\n***********************************";
+cout<<"\nROLL NO\tNAME\tDOB\tBLOOD GRP\tCLASS\tDIVISION\tCONTACT
+NO";
+display(s1);
+cout<<"\n**************************************************************
+***";
+int i, n;
+student *s[50];
+cout<<"\nEnter how many object do you want to create?"<<"\n";
+cin>>n;
+for(i=0;i<n;i++)
+{
+s[i]=new student();
+}
+for(i=0;i<n;i++)
+{
+s[i]->getdata();
+}
+for(i=0;i<n;i++)
+{
+display(*s[i]);
+}
+for (i=0;i<n;i++)
+{
+delete(s[i]);
+}
+return 0;
+}
+
+
+Output
+Enter details of student:
+Enter the roll number of students: 40
+Enter name of student: Ashmeer
+Enter the date of birth of student: 07/01/2003
+Enter the blood group of student: AB+ve
+Enter the class of student: SE
+Enter the divisin of student: A
+Enter the contact of student: 7722017202
+All data is displayed below:
+***********************************************************************
+ROLL NO NAME DOB BLOOD GRP CLASS DIVISION CONTACT
+NO
+40 Ashmeer 07/01/2003 AB+ve SE A 7722017202
+***********************************************************************

@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+class complex
+{
+ float x;
+ float y;
+ public:
+complex()
+ {
+ x=0;
+ y=0;
+ }
+complex operator+(complex);
+complex operator*(complex);
+friend istream&operator>>(istream&input,complex&t)
+{
+ cout<<"ENTER THE REAL PART:";
+ input>>t.x;
+ cout<<"ENTER THE IMAGENERY [PART";
+ input>>t.y;
+ return input;
+}
+friend ostream & operator<<(ostream& output, complex&t)
+{
+ output<<t.x<<"+"<<t.y<<"i\n";
+ return output;
+}
+};
+complex complex::operator + (complex c)
+{
+complex temp;
+temp.x=x+c.x;
+temp.y=y+c.y;
+return(temp);
+}
+int main()
+{
+ complex c1,c2,c3,c4;
+cout<<"DEFAULT CONSTRUCTOR VALUE=\n";
+ cout<<c1;
+ cout<<"\n ENTER THE 1st NUMBER \n";
+ cin>>c1;
+ cout<<"\n ENTER THE 2nd NUMBER \n";
+ cin>>c2;
+ c3=c1+c2;
+ c4=c1+c2;
+ cout<<"\n THE FIRST NUMBER IS";
+ cout<<c1;
+ cout<<"\n THE ADDITION IS";
+ cout<<c3;
+ cout<<"\n THE MULTIPLICATION IS";
+ cout<<c4;
+ return 0;
+}
+
+Output
+DEFAULT CONSTRUCTOR VALUE=
+0+0i
+ENTER THE 1st NUMBER
+ENTER THE REAL PART:1
+ENTER THE IMAGENERY [PART0
+ENTER THE 2nd NUMBER
+ENTER THE REAL PART:20
+ENTER THE IMAGENERY [PART1
+THE FIRST NUMBER IS1+0i
+THE ADDITION IS21+1i
+THE MULTIPLICATION IS21+1i

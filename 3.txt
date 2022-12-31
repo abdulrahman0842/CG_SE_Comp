@@ -1,0 +1,195 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class publication
+{ private:
+string title;
+float prices;
+public:
+publication( { title="";
+prices=0.0;
+}
+void get_data(){ cout<<"\nEnter Title :"<<"\n";
+cin.ignore();
+getline(cin,title);
+cout<<"\nEntern Price :"<<"\n";
+cin>>prices;
+}
+void put_data() { cout<<"\n______________________\n";
+cout<<"\n Information : "<<endl;
+cout<<"\n Title :"<<title;
+cout<<"\n Price :"<<prices;
+}
+};
+class book: public publication
+{
+private:
+int pages;
+public:
+book()
+{
+pages=0;
+}
+void get_data()
+{
+publication::get_data();
+cout<<endl;
+cout<<"Enter Page Count : \n";
+cin>>pages;
+}
+void put_data()
+{
+publication::put_data();
+try{
+if(pages<0)
+throw pages;}
+catch(int f)
+{cout<<"\n error: pages not valid :"<<f;
+pages=0;
+}
+cout<<"\n Pages Are :"<<pages<<"\n";
+}
+};
+class tape: public publication
+{
+private:
+float playtime;
+public:
+tape()
+{
+playtime=0.0;
+}
+void get_data()
+{
+publication::get_data();
+cout<<"Enter Play Time of Cassete \n";
+cin>>playtime;
+}
+void put_data()
+{
+publication::put_data();
+try
+{
+if (playtime<0.0)
+throw playtime;
+}
+catch (float r)
+{
+cout<<"\n Error:Invalid Playtime : "<<playtime;
+playtime=0.0;
+}
+cout<<"\n Playtime is: "<<playtime<<"\n";
+}
+};
+int main()
+{
+book b[10];
+tape t[10];
+int choice=0,bookCount=0,tapeCount=0;
+cout<<"------------------------";
+do
+{
+cout<<"\n 1. Add Book ";
+cout<<"\n 2. Add Tape: ";
+cout<<"\n 3. Display Book ";
+cout<<"\n 4. Display Tape";
+cout<<"\n 5. Exit:"<<endl;
+cout<<"\n Enter Choice : ";
+cin>>choice;
+switch(choice)
+{
+case 1:
+{
+cout<<"\n--------------------\n";
+cout<<"Add Book: \n";
+b[bookCount].get_data();
+bookCount++;
+break;
+}
+case 2:
+{
+cout<<"\n---------------------\n";
+cout<<"Add Tape: \n";
+t[tapeCount].get_data();
+tapeCount++;
+break;
+}
+case 3:
+{
+cout<<"\n (books)";
+for(int j=0;j<bookCount;j++)
+{
+t[j].put_data();
+}
+break;
+}
+case 5:
+{
+cout<<"***********Program Executed 
+Succesfully************"<<endl;
+exit(0);
+}
+default: {
+cout<<"\n Invalid";
+}
+}}
+while(choice!=5);
+return 0;
+}
+
+
+
+Output
+------------------------
+1. Add Book
+2. Add Tape:
+3. Display Book
+4. Display Tape
+5. Exit:
+Enter Choice : 1
+-------------------
+Add Book:
+Enter Title :
+C++
+Entern Price :
+150
+Enter Page Count :
+180
+1. Add Book
+2. Add Tape:
+3. Display Book
+4. Display Tape
+5. Exit:
+Enter Choice : 2
+--------------------
+Add Tape:
+Enter Title :
+MC Stan
+Entern Price :
+300
+Enter Play Time of Cassete
+2
+1. Add Book
+2. Add Tape:
+3. Display Book
+4. Display Tape
+5. Exit:
+Enter Choice : 3
+(books)
+_______________
+Information :
+Title :MC Stan
+Price :300
+Playtime is: 2
+1. Add Book
+2. Add Tape:
+3. Display Book
+4. Display Tape
+5. Exit:
+Enter Choice : 4
+Invalid
+1. Add Book
+2. Add Tape:
+3. Display Book
+4. Display Tape
+5. Exit:
